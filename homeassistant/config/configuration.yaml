@@ -27,3 +27,6 @@ input_text:
   grocy_chore_id:
     name: Grocy chore ID
     max: 6
+
+frontend:
+  themes: !include themes.yaml
