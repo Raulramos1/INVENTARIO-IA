@@ -1,0 +1,79 @@
+title: Grocy Dashboard
+views:
+  - title: Estado
+    path: estado
+    cards:
+      - type: entities
+        entities:
+          - binary_sensor.grocy_products_expired
+          - binary_sensor.grocy_products_expiring
+          - binary_sensor.grocy_products_missing
+          - binary_sensor.grocy_tasks_overdue
+          - binary_sensor.grocy_chores_overdue
+      - type: grid
+        title: Acciones rápidas
+        columns: 2
+        square: false
+        cards:
+          - type: button
+            name: Añadir faltantes a la lista
+            tap_action:
+              action: call-service
+              service: grocy.add_missing_products_to_shopping_list
+          - type: button
+            name: Ejecutar chore
+            tap_action:
+              action: call-service
+              service: grocy.execute_chore
+              service_data:
+                chore_id: "<CHORES_ID>"
+          - type: button
+            name: Consumir producto
+            tap_action:
+              action: call-service
+              service: grocy.consume_product_from_stock
+              service_data:
+                product_id: "<PRODUCT_ID>"
+                amount: "<AMOUNT>"
+          - type: button
+            name: Añadir producto
+            tap_action:
+              action: call-service
+              service: grocy.add_product_to_stock
+              service_data:
+                product_id: "<PRODUCT_ID>"
+                amount: "<AMOUNT>"
+  - title: Tareas y chores
+    path: tareas
+    cards:
+      - type: entities
+        entities:
+          - sensor.grocy_tasks
+          - sensor.grocy_chores
+          - binary_sensor.grocy_tasks_overdue
+          - binary_sensor.grocy_chores_overdue
+      - type: custom:grocy-chores-card
+        show_days: 0
+        show_track_button: true
+        show_create_task: true
+  - title: Compras
+    path: compras
+    cards:
+      - type: entities
+        entities:
+          - binary_sensor.grocy_products_missing
+          - sensor.grocy_shopping_list
+      - type: button
+        name: Abrir Grocy
+        icon: mdi:open-in-new
+        tap_action:
+          action: url
+          url_path: "<GROCY_URL>"
+  - title: Stock
+    path: stock
+    cards:
+      - type: entities
+        entities:
+          - binary_sensor.grocy_products_expired
+          - binary_sensor.grocy_products_expiring
+          - binary_sensor.grocy_products_missing
