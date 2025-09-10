@@ -28,6 +28,23 @@ services:
     networks:
       - ha_net
 
+  barcodebuddy:
+    container_name: barcodebuddy
+    image: f0rc3/barcodebuddy-docker:latest
+    environment:
+      OVERRIDDEN_USER_CONFIG: >-
+        GROCY_API_URL=${GROCY_INTERNAL_URL};GROCY_API_KEY=${GROCY_API_KEY}
+    volumes:
+      - bb_config:/config
+    ports:
+      - "${BB_HTTP_PORT}:80"
+    restart: unless-stopped
+    networks:
+      - ha_net
+
 networks:
   ha_net:
     driver: bridge
+
+volumes:
+  bb_config:
