@@ -47,7 +47,7 @@ INVENTARIO-IA/
 │  └─ bash/
 │     └─ up.sh                    # Arranque en bash (opcional)
 ├─ docs/
-│  └─ HAC S-instalacion.md        # Guía rápida de HACS y Grocy
+│  └─ HACS-instalacion.md        # Guía rápida de HACS y Grocy
 ├─ .env                           # TZ/PUID/PGID para Docker
 ├─ docker-compose.yml             # Servicios: Home Assistant + Grocy
 ├─ .gitignore
