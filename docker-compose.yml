@@ -32,7 +32,7 @@ services:
     container_name: barcodebuddy
     image: f0rc3/barcodebuddy-docker:latest
     environment:
-      - OVERRIDDEN_USER_CONFIG="GROCY_API_URL=${GROCY_INTERNAL_URL};GROCY_API_KEY=${GROCY_API_KEY}"
+      OVERRIDDEN_USER_CONFIG: "GROCY_API_URL=${GROCY_INTERNAL_URL};GROCY_API_KEY=${GROCY_API_KEY}"  # yamllint disable-line rule:line-length
     volumes:
       - bb_config:/config
     ports:
