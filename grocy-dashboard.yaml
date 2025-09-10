@@ -69,12 +69,9 @@ views:
         entities:
           - binary_sensor.grocy_products_missing
           - sensor.grocy_shopping_list
-      - type: button
-        name: Abrir Grocy
-        icon: mdi:open-in-new
-        tap_action:
-          action: url
-          url_path: "<GROCY_URL>"
+      - type: webpage
+        url: http://grocy:9283
+        height: 800
   - title: Stock
     path: stock
     cards:
