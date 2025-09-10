@@ -1,3 +1,4 @@
+---
 grocy_add_to_stock:
   alias: Grocy add to stock
   fields:
@@ -75,4 +76,3 @@ grocy_execute_chore_from_helpers:
     - service: grocy.execute_chore
       data:
         chore_id: "{{ chore_id }}"
-

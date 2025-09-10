@@ -1,3 +1,4 @@
+---
 title: Grocy Dashboard
 views:
   - title: Estado
@@ -82,3 +83,37 @@ views:
           - binary_sensor.grocy_products_expired
           - binary_sensor.grocy_products_expiring
           - binary_sensor.grocy_products_missing
+  - title: Control rápido
+    path: control-rapido
+    cards:
+      - type: entities
+        entities:
+          - input_text.grocy_product_id
+          - input_number.grocy_amount
+          - input_text.grocy_chore_id
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: button
+            name: Añadir producto
+            tap_action:
+              action: call-service
+              service: script.grocy_add_from_helpers
+          - type: button
+            name: Consumir producto
+            tap_action:
+              action: call-service
+              service: script.grocy_consume_from_helpers
+          - type: button
+            name: Ejecutar chore
+            tap_action:
+              action: call-service
+              service: script.grocy_execute_chore_from_helpers
+      - type: entities
+        entities:
+          - binary_sensor.grocy_products_expired
+          - binary_sensor.grocy_products_expiring
+          - binary_sensor.grocy_products_missing
+          - binary_sensor.grocy_tasks_overdue
+          - binary_sensor.grocy_chores_overdue
