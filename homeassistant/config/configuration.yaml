@@ -12,3 +12,18 @@ grocy:
   url: "http://grocy:9283"
   api_key: !secret grocy_api_key
   verify_ssl: false
+
+input_number:
+  grocy_amount:
+    name: Grocy amount
+    min: 1
+    max: 20
+    step: 1
+
+input_text:
+  grocy_product_id:
+    name: Grocy product ID
+    max: 6
+  grocy_chore_id:
+    name: Grocy chore ID
+    max: 6

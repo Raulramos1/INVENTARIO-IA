@@ -1,0 +1,49 @@
+grocy_add_to_stock:
+  alias: Grocy add to stock
+  fields:
+    product_id:
+      description: ID del producto
+      example: 1
+      required: true
+    amount:
+      description: Cantidad a añadir
+      default: 1
+  sequence:
+    - service: grocy.add_product_to_stock
+      target: {}
+      data:
+        product_id: "{{ product_id }}"
+        amount: "{{ amount }}"
+  mode: single
+
+grocy_consume_from_stock:
+  alias: Grocy consume from stock
+  fields:
+    product_id:
+      description: ID del producto
+      example: 1
+      required: true
+    amount:
+      description: Cantidad a consumir
+      default: 1
+  sequence:
+    - service: grocy.consume_product_from_stock
+      target: {}
+      data:
+        product_id: "{{ product_id }}"
+        amount: "{{ amount }}"
+  mode: single
+
+grocy_execute_chore:
+  alias: Grocy execute chore
+  fields:
+    chore_id:
+      description: ID del chore
+      example: 1
+      required: true
+  sequence:
+    - service: grocy.execute_chore
+      target: {}
+      data:
+        chore_id: "{{ chore_id }}"
+  mode: single
