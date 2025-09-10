@@ -50,6 +50,7 @@ grocy_execute_chore:
   mode: single
 
 grocy_add_from_helpers:
+  alias: Grocy add from helpers
   variables:
     product_id: "{{ states('input_text.grocy_product_id') | int }}"
     amount: "{{ states('input_number.grocy_amount') | float }}"
@@ -58,8 +59,10 @@ grocy_add_from_helpers:
       data:
         product_id: "{{ product_id }}"
         amount: "{{ amount }}"
+  mode: single
 
 grocy_consume_from_helpers:
+  alias: Grocy consume from helpers
   variables:
     product_id: "{{ states('input_text.grocy_product_id') | int }}"
     amount: "{{ states('input_number.grocy_amount') | float }}"
@@ -68,11 +71,14 @@ grocy_consume_from_helpers:
       data:
         product_id: "{{ product_id }}"
         amount: "{{ amount }}"
+  mode: single
 
 grocy_execute_chore_from_helpers:
+  alias: Grocy execute chore from helpers
   variables:
     chore_id: "{{ states('input_text.grocy_chore_id') | int }}"
   sequence:
     - service: grocy.execute_chore
       data:
         chore_id: "{{ chore_id }}"
+  mode: single
