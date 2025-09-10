@@ -1,0 +1,21 @@
+# Mac / Windows
+.DS_Store
+Thumbs.db
+
+# Python / Node cache
+__pycache__/
+node_modules/
+
+# Home Assistant runtime
+homeassistant/config/home-assistant_v2.db
+homeassistant/config/home-assistant_v2.db-shm
+homeassistant/config/home-assistant_v2.db-wal
+homeassistant/config/.storage/
+homeassistant/config/.cloud/
+
+# Grocy data (dejamos solo un marcador vacío)
+grocy/config/*
+!grocy/config/.gitkeep
+
+# Env files
+.env.local

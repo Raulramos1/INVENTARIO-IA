@@ -1,0 +1,32 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ./homeassistant/config:/config
+    ports:
+      - "8123:8123"
+    restart: unless-stopped
+    networks:
+      - ha_net
+
+  grocy:
+    container_name: grocy
+    image: lscr.io/linuxserver/grocy:latest
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./grocy/config:/config
+    ports:
+      - "9283:9283"
+    restart: unless-stopped
+    networks:
+      - ha_net
+
+networks:
+  ha_net:
+    driver: bridge
