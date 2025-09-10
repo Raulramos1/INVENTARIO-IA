@@ -32,3 +32,19 @@
       data:
         title: "Faltan productos"
         message: "Hay productos faltantes (lista de la compra) en Grocy."
+
+- id: "86990395-2774-4390-9ff4-6f71c391076a"
+  alias: "Actualizar datos de Grocy"
+  trigger:
+    - platform: time_pattern
+      minutes: "/2"
+  action:
+    - service: homeassistant.update_entity
+      target:
+        entity_id:
+          - sensor.grocy_stock
+          - sensor.grocy_shopping_list
+          - binary_sensor.grocy_products_missing
+          - binary_sensor.grocy_products_expiring
+          - binary_sensor.grocy_products_expired
+  mode: single
