@@ -47,3 +47,32 @@ grocy_execute_chore:
       data:
         chore_id: "{{ chore_id }}"
   mode: single
+
+grocy_add_from_helpers:
+  variables:
+    product_id: "{{ states('input_text.grocy_product_id') | int }}"
+    amount: "{{ states('input_number.grocy_amount') | float }}"
+  sequence:
+    - service: grocy.add_product_to_stock
+      data:
+        product_id: "{{ product_id }}"
+        amount: "{{ amount }}"
+
+grocy_consume_from_helpers:
+  variables:
+    product_id: "{{ states('input_text.grocy_product_id') | int }}"
+    amount: "{{ states('input_number.grocy_amount') | float }}"
+  sequence:
+    - service: grocy.consume_product_from_stock
+      data:
+        product_id: "{{ product_id }}"
+        amount: "{{ amount }}"
+
+grocy_execute_chore_from_helpers:
+  variables:
+    chore_id: "{{ states('input_text.grocy_chore_id') | int }}"
+  sequence:
+    - service: grocy.execute_chore
+      data:
+        chore_id: "{{ chore_id }}"
+
