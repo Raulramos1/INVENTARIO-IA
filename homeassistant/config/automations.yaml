@@ -1,3 +1,4 @@
+---
 - id: "a5b6b05f-4806-4ec9-b4f3-eccdc50c9c6c"
   alias: "Añadir productos faltantes a la lista"
   trigger:
@@ -5,3 +6,29 @@
       at: "20:00:00"
   action:
     - service: grocy.add_missing_products_to_shopping_list
+
+- id: "14573ab0-0261-44d0-95af-516ef7b0fef4"
+  alias: "Notificar productos caducados"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.grocy_products_expired
+      to: "on"
+      for: "00:05:00"
+  action:
+    - service: persistent_notification.create
+      data:
+        title: "Productos caducados"
+        message: "Hay productos caducados en Grocy. Revisa el stock."
+
+- id: "258c4017-22ed-4226-9b8f-18e7507ede42"
+  alias: "Notificar productos faltantes"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.grocy_products_missing
+      to: "on"
+      for: "00:05:00"
+  action:
+    - service: persistent_notification.create
+      data:
+        title: "Faltan productos"
+        message: "Hay productos faltantes (lista de la compra) en Grocy."
