@@ -53,9 +53,14 @@ views:
           - binary_sensor.grocy_tasks_overdue
           - binary_sensor.grocy_chores_overdue
       - type: custom:grocy-chores-card
+        title: Pendientes
+        entities:
+          - sensor.grocy_chores
+          - sensor.grocy_tasks
         show_days: 0
         show_track_button: true
         show_create_task: true
+        use_24_hours: true
   - title: Compras
     path: compras
     cards:
